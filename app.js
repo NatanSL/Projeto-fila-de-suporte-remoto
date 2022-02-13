@@ -5,12 +5,21 @@ const dotenv = require('dotenv').config();
 const port = 5000;
 const key = process.env.KEY;
 const axios = require('axios');
+// const handlebars = require("express-handlebars");
+
+// app.engine('handlebars', handlebars({ defaultLayout: 'main'}));
+// app.set('view engine', 'handlebars');
+// app.set('views', './views');
+
+// app.get('/', (req, res) => {
+//     res.send('home');
+// })
 
 
 
 //Routes
 app.get('/', async (req,res) => {
-
+   
     //Consult API   
     const data = await axios(`https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?${key},vApiOS,3`);    
     const suporte = data.data;  
@@ -69,4 +78,4 @@ app.listen(port, (err) => {
 
 
 
-//https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,4
+// https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,4
