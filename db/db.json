@@ -1,0 +1,11 @@
+[
+    {
+        "OS" : "12345",
+        "Data_Abertura" : "21/08/21",
+        "Cliente" : "Amazon zip",
+        "Vendedor": "Douglas piero",
+        "Equipamento": "Coletor de dados",
+        "Modelo": "CK3A1",
+        "Numero_de_Serie": 123456789896
+    }
+]

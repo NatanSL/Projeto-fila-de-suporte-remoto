@@ -2,23 +2,22 @@ const express = require("express");
 const res = require("express/lib/response");
 const app = express();
 const dotenv = require('dotenv').config();
-const port = 5000;
+const port = 5000; 
 const key = process.env.KEY;
 const axios = require('axios');
-// const handlebars = require("express-handlebars");
+const { engine } = require("express-handlebars");
 
-// app.engine('handlebars', handlebars({ defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
-// app.set('views', './views');
+//config handlebars
+app.engine('handlebars', engine({ defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
-// app.get('/', (req, res) => {
-//     res.send('home');
-// })
-
-
+//Files Statics
+app.use(express.static('public'));
 
 //Routes
 app.get('/', async (req,res) => {
+
    
     //Consult API   
     const data = await axios(`https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?${key},vApiOS,3`);    
@@ -38,7 +37,12 @@ app.get('/', async (req,res) => {
             });
         }
     }   
-    res.json(dados.dado);
+    // res.json(dados.dado);
+
+    const active = "active";
+    const desactive = "";
+
+    res.render('emAbertos', {active, desactive})
 })
 
 
@@ -62,9 +66,19 @@ app.get('/finalizados', async (req,res)  =>{
            });
         }         
     }
-    res.json(dadosFinalizados.dado);
+    // res.json(dadosFinalizados.dado);
+    const active = "desactive";
+    const desactive = "active";
+    
+    res.render('finalizados', {active, desactive});
 });
 
+
+
+app.get('/home', (req, res) => {
+     //renderizar
+    res.render('home');   
+});
 
 app.listen(port, (err) => {
   try {
