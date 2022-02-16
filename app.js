@@ -33,7 +33,8 @@ app.get('/', async (req,res) => {
                 Cliente: suporte[i].PessoaFantasia,
                 Vendedor: suporte[i].AgenteNegNome,
                 Equipamento: suporte[i].NomeEquipamento,
-                NS: suporte[i].EquipamentoLTS
+                NS: suporte[i].EquipamentoLTS,
+                Data_Movimento: suporte[i].DataFinalMovto
             });
         }
     }   
@@ -43,13 +44,16 @@ app.get('/', async (req,res) => {
     const desactive = "";
 
     res.render('emAbertos', {active, desactive})
+    console.log(dados.dado)
+    
+    
 })
 
 
 app.get('/finalizados', async (req,res)  =>{
 
     //Consult API
-    const data2 = await axios(`https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?${key},vApiOS,15`);
+    const data2 = await axios(`https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?${key},vApiOS,14`);
     const finalizados = data2.data;
     let dadosFinalizados = {dado: []};
 
