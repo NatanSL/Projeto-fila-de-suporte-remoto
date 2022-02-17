@@ -1,40 +1,31 @@
-<div class="container mt-4">
+<div class="container mt-4 bg-dark text-light">
     
-    <table id="table_id" class="display">
-    <thead>
-        <tr>
-            <th>OS</th>
+    <table id="table_id" class="display text-light">
+    <thead class="bg-dark text-light">
+        <tr >
+            <th class="bg-dark">OS</th>
             <th>Data de Abertura</th>
             <th>Cliente</th>
             <th>Vendedor</th>
-            <th>Equipamento</th>
-            <th>Modelo</th>
+            <th>Equipamento</th>       
             <th>Número de Série</th>
             <th>Ultimo movimento</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td class=" badge bg-success mt-2 mb-2 " style="font-size: 15px">32169</td>
-            <td>21/03/2022</td>
-            <td>Comercial Melhor</td>
-            <td>Joana</td>
-            <td>Coletor de Dados</td>
-            <td>Dolphin 6500</td>
-            <td>852782635</td>
-            <td>11/11/21 08:05</td>
-        </tr>
-        <tr>
-            <td class=" badge bg-success mt-2 mb-2  " style="font-size: 15px">30015</td>
-            <td>21/03/2022</td>
-            <td>Sint Sistemas</td>
-            <td>Mayara</td>
-            <td>Coletor de Dados</td>
-            <td>MC659b</td>
-            <td>123456789653</td>
-            <td>11/11/21 08:05</td>
-        </tr>
-       
+    <tbody >
+        
+        {{#each dados.dado}} 
+        <tr>  
+            <td class="badge bg-success mb-2 mt-4" style="font-size: 15px">{{OS}}</td>            
+            <td>{{Data_abertura}}</td>
+            <td>{{Cliente}}</td>
+            <td>{{Vendedor}}</td>
+            <td>{{Equipamento}}</td>
+            <td> {{NS}}</td>
+            <td>{{Data_Movimento}}</td>
+         </tr>   
+        {{/each}}   
+
     </tbody>
 </table>
 
